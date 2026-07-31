@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>How it's all organised: Dividni question and document banks</h1>
+<p>On the Dividni web user interface dashboard, the left side of the window shows your question banks and the right hand side shows a document bank and an image bank. What are these and how do they work?</p>
+<h2>Dividni question banks</h2>
+<p>A Dividni question bank is simply a collection of questions. It is up to you how you wish to organise your question banks. You might want to have a question bank for a particular (sub-)topic, a particular course, a particular course instance in a particular semester even, for your mid-semester test(s) in a course, for your exam in that course. Entirely up to you.</p>
+<p>There is an option to add all questions or just selected questions from a question bank to an exam (all assessments here are called an "exam" even if they are just tests). Once selected, each exam script will show an instance of all of these questions, there is no way of randomly picking a question out of a question bank (in this respect, Dividni is a bit different from other systems).</p>
+<p>Once assigned to an exam, the exam when generated will use the question in exactly the form in which it the question is stored in the question bank. This is important if you are preparing multiple concurrent but different exams for use in different courses that are using the same questions: If you edit the question in the question bank and "update all" on save, it will update the question in <strong>all </strong>exams that use this question, past, present and future.&nbsp;</p>
+<p>One of the consequences of this is that certain edits - such as changing the question type or adding answer options or statements - change the question generation for this and any subsequent questions in each exam that uses them. This means that the answer keys for an exam that you have generated but that for print production reasons needs to be regenerated will change compared to the old version. Similarly, it means that if you have lost your answer keys for an exam that is already in print, these can now no longer be regenerated.</p>
+<p>A safer option is to create a question bank for each exam and create a copy of each question in the exam to store in that question bank. That way, making changes to a question for use in another exam only affects the copy in that question bank and that exam.</p>
+<p>You can add questions to a question bank by:</p>
+<ul style="list-style-type: disc;">
+    <li>Creating (authoring) a new question</li>
+    <li>Uploading an existing question or ZIP file with questions from your machine (if you have used Dividni in the command line version before)</li>
+    <li>Moving or copying a question from another question bank</li>
+</ul>
+<h2>The Document bank</h2>
+<p>A Dividni exam consists of three to four parts:</p>
+<ol style="list-style-type: decimal;">
+    <li>The <strong>prologue</strong>. This is the "title page" or "cover sheet" in UoA terminology. It's written in HTML (hypertext markup language) and generally needs adaptation for each exam to adapt for the course title and number, correct number of questions and correct percentage of exam marks in the final grade. There may also be other instructions you may want to change. Make sure to keep it short and sweet - no more than the one page.</li>
+    <li>The questions. These don't go into the document bank.</li>
+    <li>An <strong>epilogue</strong>, also known as an "appendix". This may be required to equalise the number of pages to an even number, but may also be used to supply additional lookup material to the students. Again, this will generally be exam-specific. If the number of pages in the exam script is already even and there is no additional material you want to supply in exam, the appendix may be left out altogether.</li>
+    <li>The <strong>answer sheet&nbsp;</strong>(also known as <strong>OMR </strong>- optical mark recognition sheet). This is written in HTML-like SVG (scalable vector graphics) format and can be edited - but please don't unless you know how to ensure that none of the alignment marks move or get covered, removed or resized. Any of this will leave your forms unscannable.</li>
+</ol>
+<p>The Document bank holds cover sheets, appendices and OMR sheets. When you set up an assessment (exam), you pick the required and optional (appendix) items in the setup menu from the Document bank. As for questions, editing a document in the Document bank changes it for all exams it is associated with. Unless this is what you want (most likely not), make a copy for each exam, edit the copy, and use this in your exam.</p>
+<p><strong>Note</strong>: When editing HTML for appendices or the cover sheet, do not use MS Word or other "HTML editors" - they tend to do a really shoddy job, add material we don't want, and in some case turn what's supposed to be one file into many. Use a plain text editor such as Notepad++ or TextEdit on the Mac. Make sure all tags are properly paired and closed - or risk error messages on preview generation. If need be, find someone who knows about HTML and ask for help.</p>
+<h2>The Image bank</h2>
+<p>The image bank is for images to use in questions. Note that images can't be edited. So the way to change an image in a question is to delete the image (be careful that it isn't used in another version of the same question in another question bank or exam) and upload a new image, remove the &lt;img ... /&gt; tag in the question code and insert the new image there instead.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

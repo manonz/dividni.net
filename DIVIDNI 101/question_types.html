@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>The two Dividni question types</h1>
+<p>Dividni knows two multiple-choice question types: Truth and XYZ questions. You define questions of both question types in almost exactly the same way in the Dividni Web user interface when you "Create a question". While they look quite different on paper, they are actually very similar under the hood.</p>
+<h2>Truth questions</h2>
+<p>Truth questions present to the students as a question stem posing the question and five answer options from which the students are supposed to select one "correct" option. A simple example of an instance of such a versioned question:</p>
+<div class="question">
+<p><em>Which of the following cities is a national capital?</em></p>
+<p><em>A. Sydney</em><br /><em>B. Hamburg</em><br /><em>C. Seoul</em><br /><em>D. Rio de Janeiro</em><br /><em>E. New York</em></p>
+</div>
+<p>In the Dividni Web user interface you would define this question by choosing "Truth question" as the question type and then entering a number of "correct" options containing one name of a national capital each, followed by a number of "incorrect" options containing the names of cities that are not national capitals.</p>
+<p>For a Truth question, you need at least one "correct" option and at least four "incorrect" options. Sticking to these minimum numbers is not recommended - ideally, the more&nbsp; "correct" and "incorrect" options you have, the less likely that students looking sideways in a test or exam will find useful intelligence for their own questions on their neighbours' sheets.</p>
+<p>For example, say you had Bangkok, Paris, Cairo, New Delhi, Seoul and Ottawa as your "correct" answer options, and Osaka, Sydney, New York, Barcelona, Rio de Janeiro, Hamburg, Jerusalem, Johannesburg and Shanghai as the "incorrect" answer options. Then another instance of the same question in a script with a different version number might read:</p>
+<div class="question">
+<p><em>Which of the following cities is a national capital?</em></p>
+<p><em>A. Ottawa</em><br /><em>B. Rio de Janeiro</em><br /><em>C. Johannesburg</em><br /><em>D. Barcelona</em><br /><em>E. Hamburg</em></p>
+</div>
+<p>In total, the above "correct" and "incorrect" option lists allow for 10,080 distinct choices of answer option combinations, each of which could appear in 120 different orders on the options list.</p>
+<p><strong>Caveats</strong>:</p>
+<ul>
+    <li>All answer options on the lists should be about equally difficult to accept as correct or dismiss as incorrect, based on the expected learning in the class. E.g., you might not want to include the capital of a country in the "correct" options that few students would have heard of.</li>
+    <li>The terms "correct" and "incorrect" are to understood in the sense of the question stem. For example, if you asked "<em>Which of the following cities is <strong>NOT</strong> a national capital?</em>" then you would need to have Bangkok, Paris, Cairo, New Delhi, Seoul and Ottawa as your "incorrect" answer options, and Osaka, Sydney, New York, Barcelona, Rio de Janeiro, Hamburg, Jerusalem, Johannesburg and Shanghai as the "correct" answer options.</li>
+    <li>Ensure that you don't inadvertently include a "correct" answer among the "incorrect" options or vice versa. This is an easy mistake to make (especially when your question asks in the negative as just discussed) and leads to some students being presented with intact questions, while others may be presented with questions that do not have a correct answer or questions that have multiple correct answers - neither of which works with Dividni.</li>
+</ul>
+<h2>XYZ questions</h2>
+<p>XYZ questions are very similar to Truth questions in terms of definition on Dividni, except that the pools of "correct" and "incorrect" answer options from the Truth questions now become "correct" and "incorrect" statements, and that the question definition needs a minimum of three "correct" and three "incorrect" statements - again, the more the merrier. We can thus re-use our "correct" and "incorrect" lists from the Truth question above and only amend the stem slightly to obtain question instances like:</p>
+<div class="question">
+<p><em>Which of the following cities are national capitals?</em></p>
+<p><em>X. Barcelona<br />Y. Sydney<br />Z. Cairo</em></p>
+<p><em>A. X and Y only<br />B. X and Z only<br />C. Y and Z only<br />D. All of X, Y, and Z<br />E. None, or only one of X, Y, and Z</em></p>
+</div>
+<p>There is also a second answer scheme, randomly chosen per instance. For the same random choice of XYZ statements above, the question with this scheme would read:</p>
+<div class="question">
+<p><em>Which of the following cities are national capitals?</em></p>
+<p><em>X. Barcelona<br />Y. Sydney<br />Z. Cairo</em></p>
+<p><em>A. X only</em><br /><em>B. Y only</em><br /><em>C. Z only</em><br /><em>D. None of X, Y, and Z</em><br /><em>E. All, or two of X, Y, and Z</em></p>
+</div>
+<p>With sufficiently large correct and incorrect pools, we can convert an XYZ question into a Truth question and vice versa, simply by changing the question type (and amending the question stem as appropriate).</p>
+<p>The same caveats as for Truth questions apply.</p>
+</body>
+</html>

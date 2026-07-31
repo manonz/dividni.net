@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>Getting multiple script versions: Producing a Dividni MCQ test or exam</h1>
+<p>Producing an exam means generating the requisite number of versions of exam scripts and associated OMR sheets. There are three "use cases" here:</p>
+<ol style="list-style-type: decimal;">
+    <li>Proofreading your questions in an actual versioned exam setting. For this purpose, you will usually want to produce a small number of versions, say 10. Course staff can then proofread these 10 versions. Proofreading is best done with proofreading markup - these are markers (***) that Dividni puts into the script in front of either the correct answer option for truth questions, or in front of the correct statements (if any) for XYZ questions (note you will not see any markup for XYZ question versions where Dividni has picked three incorrect statements for the version). Proofreading is especially useful to reveal:
+        <ul style="list-style-type: disc;">
+            <li>Statements / answer options that, in combination, contradict each other or give away the veracity of another option or statement,</li>
+            <li>Formatting issues (e.g., too little working space or risk of margin or page overruns), or</li>
+            <li>Numerical mistakes (for parameterised questions).</li>
+        </ul>
+    </li>
+    <li>Production for printing that requires each version to be in a separate PDF file. This is most commonly what external printing contractors require.</li>
+    <li>Production for Assessment Services Exam printing. This requires all versions to be concatenated into a single large PDF file.</li>
+</ol>
+<h2>Production for proofreading</h2>
+<p>This requires that you tick either the "Proof copy (not for examination)" at the bottom of the "Edit Assessment Setup" / "Exam Setup" dialog or that you choose the option at production time from the "Generate Final Exam Scripts" menu.</p>
+<p>To produce your proofreading run, click on "Generate Final Exam Scripts" at the top right of the exam preview window.</p>
+<p>Under Paper Count, enter 10 (or whatever number of versions you want to generate for proofreading).</p>
+<p>As the StartID, you can choose anything. Best practice is to use a StartID that ensures that the range of version numbers you will create is different from those generated for the actual exam - in case someone / something leaks the proofreading scripts to students, this prevents a situation where the answers to some scripts are known and those of others aren't. For example, if you set StartID to 20, this will generate versions 20 to 29 (for 10 versions). You could then use the default of 42 for the StartID for your actual exam script versions.</p>
+<p>Unless you plan to do all of the proofreading yourself, you probably don't want to tick the "Single (large) PDF" box.</p>
+<p>Hit the "Generate final exam scripts" button.</p>
+<p>When done, Dividni will prompt you to download the "ground truth" answer files as a ZIP file. You must download them, but for the act of proofreading, you do not actually need them. Once you have downloaded the "ground truth" answer files, Dividni makes a link to the actual scripts available.</p>
+<p>Do not forget to proofread the prologue (front page and instructions) - most Assessment Services rejects relate to issues on this page!</p>
+<h2>Production for printing</h2>
+<p>If you've previously been proofreading, ensure that the "Proof copy (not for examination)" at the bottom of the "Edit Assessment Setup" / "Exam Setup" dialog is turned off and the setup saved as such.</p>
+<p>Click on "Generate Final Exam Scripts" at the top right of the exam preview window.&nbsp;</p>
+<p>Under Paper Count, enter whatever number of versions you need. Generally, you will want that to be <strong>class size + X</strong>. In other words: One individual version per student enrolled and then some extras in case people spoil their scripts or you drop them in the rain or you do need to split the test or exam across multiple theatres after all. Assessment Services generally want 20% more script versions for the exams than there are students.</p>
+<p>As the StartID, choose a number that doesn't overlap with any range that you have used for proofreading. I usually like to generate two basic tests or exams - one for the class that sits it on the day and another (with a few questions swapped out) for any stragglers who sit later as a result of aegrotats etc. In this case, ensure that the StartIDs of both are sufficiently different so there are no overlaps - this allows you to tell scripts apart if students come and see you later.&nbsp;</p>
+<p>The default of 42 for the StartID is a nod to Douglas Adams and his answer to the ultimate question of life, the universe and everything.</p>
+<p>Tick the "Single (large) PDF" box if you are producing scripts for submission to Assessment Services.</p>
+<p>Hit the "Generate final exam scripts" button.</p>
+<p>This can now take some time, depending on how many questions you have in your exam and how many versions you need to produce. An exam with 40 questions and 1000 versions can take in the order of a couple of hours to produce. Do not close your browser - there will be a progress bar. Needless to say it is not a good idea to start this process when you are about to pack up your laptop to go home!</p>
+<p>When done, Dividni will prompt you to download the "ground truth" answer files as a ZIP file. <strong>You must download them and store them in a safe place as you will need them for marking</strong> (if you lose them or your computer dies or whatever, we may not be able to help you). Download and store them every time you have made changes to the test / exam as they may have changed also.</p>
+<p>Once you have downloaded the "ground truth" answer files, Dividni makes a link to the actual scripts available.</p>
+<h3>Instructions to printing contractors</h3>
+<p>Printing a Dividni test or exam is a bit of an unusual task for a printing contractor: Normally, they print N copies of 1 document. We need to ask them to print 1 copy of N documents, staple them and - recommended for large classes to ensure embargo until official start time - inserted into an A4 envelope each.</p>
+<p>Here are the instructions we use (adapt for your own assessment):</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="width: 99.902%;">
+                <pre class="moz-quote-pre">Could we please have all of the [number of scripts] PDF files in the attached ZIP file printed individually for the DIVIDNI 101 test. The ZIP format opens with Winzip or 7zip.
+
+We need:
+
+- double-sided printing
+- each printout stapled in the top left corner
+- each printout inserted in a plain A4 envelope and sealed
+- everything here by [date a couple of days before the test] ideally (the test is
+on [actual test date and time])</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The last bullet ensures that there is time for contingencies (mis-printing, lost deliveries etc.)</p>
+<h2>What could possibly go wrong?</h2>
+<p>Actually, a lot!</p>
+<ul>
+    <li>If you see an error message during the production of an exam that didn't appear during the the preview, the most likely cause is a mismatched HTML tag in an answer option or statement that does not always appear in each version. This most commonly happens in questions where you have applied some formatting (e.g., bold, italics, fixed-width font, super- or subscripts):&nbsp;
+        <ul>
+            <li>E.g., a matched HTML tag for a superscript looks like this: <tt>500 m&lt;sup&gt;2&lt;/sup&gt;</tt></li>
+            <li>An unmatched tag might have the closing tag missing altogether: &nbsp;<tt>500 m&lt;sup&gt;2</tt></li>
+            <li>... or might be missing the "/" in the closing tag: <tt>500 m&lt;sup&gt;2&lt;sup&gt;</tt></li>
+            <li>Another problem are overlapping tags. E.g., bold italics should be<tt> &lt;b&gt;&lt;i&gt;like so&lt;/i&gt;&lt;/b&gt;</tt></li>
+            <li>... and not <tt>&lt;i&gt;&lt;b&gt;like so&lt;/i&gt;&lt;/b&gt;</tt> or <tt>&lt;b&gt;&lt;i&gt;like so&lt;/b&gt;&lt;/i&gt;</tt></li>
+        </ul>
+    </li>
+    <li>If the error already occurs during the preview, it could also be a similar problem in a question stem (yes, even paragraphs need closing tags: <tt>&lt;p&gt;This paragraph has one!&lt;/p&gt;</tt>), or in your exam's prologue or in your epilogue (appendix). You can copy and paste the content of your prologue in this <a class="inline_disabled" href="https://validator.w3.org/" target="_blank" rel="noopener">HTML checker</a> (choose "Validate by Direct Input" and choose "Validate HTML fragment" under "More Options").</li>
+    <li>Trying to squeeze too many questions on a page can lead to pagination issues when Dividni chooses mostly longer multi-line options / statements for some script versions. This can lead to page overruns, causing these versions to have a different number of pages from others, which is a no-no. Dividni detects any such page count mismatch automatically and stops production.</li>
+    <li>If you are using parameterised questions, bugs in your C# code can cause a compile errors or runtime error during preview and / or exam production. Ideally, an error message will tell you what is going wrong, however bug hunting may be better performed in the command line version.</li>
+    <li>Printers not obeying PDF page dimensions. If the OMR sheet takes up the entire page so that the fat black markers look rectangular rather than square (and the L-shaped one doesn't look as if made up of three smaller squares), chances are your printer is shaving off the outside of the markers. This is not a common problem but will leave the test / exam unscannable. <strong>BASIC RULE</strong>: <em>The corner markers and round row and column markers must ALL be visible and undamaged.&nbsp;&nbsp;</em></li>
+    <li>PDF readers / printers / virus scanners inserting artifacts such as barcodes, messages, labels, streaks etc. on the OMR sheet.&nbsp;<strong>BASIC RULE</strong>: <em>The corner markers and round row and column markers must ALL be visible and undamaged.</em><em>&nbsp;&nbsp;</em></li>
+</ul>
+</body>
+</html>

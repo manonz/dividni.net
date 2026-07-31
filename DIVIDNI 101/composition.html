@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>All ready? Composing a Dividni MCQ test or exam</h1>
+<p>First, you will need to have <a title="Getting the &quot;ingredients&quot; for an exam and a test together" href="https://canvas.auckland.ac.nz/courses/145207/pages/getting-the-ingredients-for-an-exam-and-a-test-together" data-course-type="wikiPages" data-published="true" data-api-endpoint="https://canvas.auckland.ac.nz/api/v1/courses/145207/pages/getting-the-ingredients-for-an-exam-and-a-test-together" data-api-returntype="Page">your ingredients</a> together:</p>
+<ul>
+    <li>Your <strong>questions</strong>, in one or more question banks.</li>
+    <li>Your <strong>prologue </strong>(cover sheet / title page), in the Document Bank.</li>
+    <li>Any epilogue (appendix) with actual content, also in the Document Bank.</li>
+    <li>Your answer sheet (such as the OMR sheet that comes with the DIVIDNI101 demo)</li>
+</ul>
+<p>Start composing an exam by hitting the "Create Exam" button in the top right corner of the right window.</p>
+<p>You will first be asked to pick the questions for the exam.</p>
+<p>Once you have selected these, Dividni&nbsp;brings up the exam configuration dialog.</p>
+<p>The configuration dialog asks for:</p>
+<ul>
+    <li>The course code that this exam is for, e.g., <strong>COMPSCI 215</strong>. This will get propagated onto the page headers and the OMR sheet when the PDF preview and final versions get generated.</li>
+    <li>A label / designator for that exam under which it will be listed in the Dividni UI. This could be something like&nbsp;<strong>COMPSCI 215 Test 1 S1 2026</strong> to tell it apart from other tests, final exam, semesters or years.</li>
+    <li>The date of the assessment. This will get propagated onto the OMR sheet when the PDF preview and final versions get generated.</li>
+    <li>The prologue (cover sheet) from the Document bank that you want to use. Copy the sample cover sheet to a new and more descriptive file name in the Document bank, then adapt it with the editor there for your course and assessment.</li>
+    <li>Any epilogue (appendix) you want to use. If you haven't got an appendix, leave this unselected, if you need the empty page appendix, you can add this in later.</li>
+    <li>The answer sheet (OMR sheet) you want to use, also from the Document bank.</li>
+    <li>The LaTeX system you want to use - ignore this unless you want to use formulas and have a preference for a particular system.</li>
+    <li>Whether you want to operate in proof mode. If you tick this box, the preview will show *** next to the "correct" answer option in Truth questions and next to "correct" statements in XYZ questions (note that if an XYZ question does not show any *** next to any of the statements, it means that all three statements are "incorrect").</li>
+</ul>
+<p>Hit "Preview" and the window will show your selected questions on the left and, after a few seconds, the PDF preview of script version 0 on the right (it'll say 000000000098, but the 98 are just checksum digits, the actual version number is to the left of the 98).</p>
+<h2>Getting the pagination right</h2>
+<p>Student experience commands that we:</p>
+<ul>
+    <li>Don't break questions across pages if at all possible, and</li>
+    <li>leave enough space for them to do their working (calculations etc.)</li>
+</ul>
+<p>Practical printing necessity commands that each script have exactly the same number of pages (including prologue/cover sheet, appendices and OMR sheet) and that this number be <strong>even,</strong> i.e., a multiple of 2.</p>
+<p>Default Dividni behaviour is that question instances in different script versions differ in length (sometimes answer options for a question take up a different number of lines) and that each question follows immediately after the other.</p>
+<p>It's up to us to:</p>
+<ul>
+    <li>Drag questions around on the left to change the order in which they appear.</li>
+    <li>Insert page breaks that:
+        <ul>
+            <li>avoid question spillover onto the next page and</li>
+            <li>ensure sufficient working space below questions.</li>
+        </ul>
+    </li>
+    <li>Insert an epilogue that brings the total number of pages up to an even number, even if that epilogue is just an empty page.</li>
+</ul>
+<p>Start with the page breaks from the front. In the left window, click on "Add page break" and then drag the page break from the end of the questions to where you need it. Add as many page breaks as you need.</p>
+<p>A page break at the end of the questions won't work, so in order to bring up the total number of pages to an even number, your epilogue (appendix) needs to have the right number of pages:</p>
+<ul>
+    <li>If you are not yet providing an appendix, go to the Assessment Setup and select the empty page appendix as your epilogue.</li>
+    <li>If you are already providing an appendix with other material and the number of pages is not right, go to the Document bank, open the empty page appendix for editing, copy its contents, then open your actual appendix for editing and paste the material from the empty page appendix at the end. This should fix it.</li>
+</ul>
+<p>&nbsp;You are now ready to produce your exam.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p></body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>Getting the "ingredients" for an exam or a test together </h1>
+<p>Before you create a test or an exam, there are a number of "ingredients" other than the questions that you need to have ready:</p>
+<ol style="list-style-type: decimal;">
+    <li>The <strong>prologue</strong>, also known as <strong>cover sheet, title page</strong> or <strong>front matter</strong>. This is the very first page of the test or exam, and at least if it's an exam, then Assessment Services has very strong opinions as to what should and shouldn't be on it. <strong>You will need to provide your own test- or exam-specific version here</strong> - see below for instructions.</li>
+    <li>Any <strong>epilogue,</strong> also known as <strong>appendix</strong>, to go between the questions and the OMR sheet. Note that you may need an empty one-page epilogue to make your total number of pages even - Dividni provides this as part of the samples, do not delete it.</li>
+    <li>The <strong>OMR </strong>sheet (<strong>O</strong>ptical <strong>M</strong>ark <strong>R</strong>ecognition sheet). This is where the students enter their name, student ID and their answers, and while we suggest that you use the template we provide, it IS possible to do a little customisation here (but please consult us first).</li>
+</ol>
+<p>The sections below explain how to get these ingredients ready.</p>
+<h2>The prologue (cover sheet / title page)</h2>
+<p>The prologue is written in HTML (HyperText Markup Language, the language in which web pages are written), however you do not need to be an HTML expert in order to produce a prologue: Your Dividni account comes with a sample "Prologue" in the Document Bank, which you can use as a template. If you wish to use this (highly recommended), proceed as follows:</p>
+<ol style="list-style-type: decimal;">
+    <li>For example, say you wanted a prologue for the test in Semester 2 in an Underwater Basketweaving course in the Department of Diving Science that is going to be 40 minutes long. Say the course code is UWATBAW101.</li>
+    <li>First, make a copy of the Prologue. To do so, head to the Document Bank panel on the right hand side of the Dashboard. Find the Prologue and hit the "Manage" button to the right of it. A dialog opens. Half-way down that dialog is an entry "Copy as:". Below that entry is an input field. Enter "Prologue_Test_S2_UWATBAW101_2026" (or whatever is appropriate in your case) and hit the "Copy" button. Then hit "Close" to close the dialog.</li>
+    <li>In the Document Bank, you will now have a prologue called "Prologue_Test_S2_UWATBAW101_2026". Hit the "Edit" button to the right.</li>
+    <li>On the left hand side, a black editor window will open. Look for the bits that need changing:
+        <ul style="list-style-type: disc;">
+            <li>Replace the "SEMESTER ONE" by "SEMESTER TWO" (or "SUMMER SEMESTER" or whatever applies).</li>
+            <li>Replace the name of the campus "City" with whatever the actual campus name is.</li>
+            <li>Replace "ASSESSMENT SCIENCE" with the name of your academic unit (e.g., "DIVING SCIENCE" in the above example).</li>
+            <li>Replace "DIVIDNI DEMO EXAM" with your course title (e.g., "UNDERWATER BASKETWEAVING").</li>
+            <li>Replace the time allowance with whatever actually applies. Note that for Assessment Services compliance, this needs to be a capital number of hours, such as "TWO hours" or "THREE hours". For your own test, you can make it "40 minutes".</li>
+            <li>Somewhere further down, it will say "Attempt all 6 questions in this booklet." Amend that to the actual number of questions you will have.</li>
+            <li>A little further still, it says "All questions carry equal marks." Amend if required, however note that in this case, the number of marks should be recorded in the stem of each question, too.</li>
+            <li>It then says "This exam is worth 50% of your final grade." Amend that to "test" if it's a test and to the actual weight of the assessment.</li>
+        </ul>
+    </li>
+    <li>Leave everything else unchanged.</li>
+    <li>Hit "Save".</li>
+</ol>
+<p>For more complex changes, please consult us first. It is possible to download the prologue and edit it in external tools, however note that many such editors add headers, style sheets and other links that Dividni neither needs nor can make sense of and that are likely to break things. Best edit in plain text editors (and no, Microsoft Word is <strong>NOT </strong>a plain text editor. Notepad++ on the PC or TextEdit on the Mac are). Whenever you edit, ensure that the HTML tags pair up - if they don't, it can break things.</p>
+<h2>The epilogue / appendix</h2>
+<p>Like prologues, appendices are HTML documents (without headers). Use them to include "cheat sheet" information for students.&nbsp;</p>
+<p>To author your own epilogue, you may again wish to start by making a copy of the "<span id="filename-label">Epilogue-appendix-with-formulas</span>" that's provided as a sample in your Document Bank. The instructions for doing so mimic those for the prologue above.&nbsp;</p>
+<p>Another important function of epilogues is to assist in evening out the number of pages in the script. As such, you may need to include the lines</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="width: 99.902%;">
+                <pre><strong>&lt;p style="page-break-after: always;"/&gt;<br />&lt;div style="text-align: center"&gt;&lt;br/&gt;THIS PAGE HAS BEEN LEFT INTENTIONALLY BLANK&lt;/div&gt;<br />&lt;p style="page-break-after: always;"/&gt;</strong></pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>at the end of your epilogue before the closing <strong>&lt;/div&gt;</strong> tag.</p>
+<p>Your test / exam does not necessarily need an epilogue unless the prologue and questions result in an odd number of pages. In this case, you can use the plain epilogue provided in the Document Bank - this only inserts an empty page.&nbsp;</p>
+<h2>The OMR sheet</h2>
+<p>Please use the <strong>Answer Sheet</strong> provided in the Document Bank. <strong>Do not edit this without consulting us first - it is very easy to make mistakes here that render the sheet un-scannable. </strong>We have had a number of cases now where sheets were modified accidentally or intentionally and where this caused issues after the test / exam.</p>
+<p>Likewise, please ensure that no stickers or other material, official pen strokes, staples or punch holes are placed on or near the black markers on the OMR sheet. And yes, it is designed to be ripped off the main booklet during the test / exam - it is the only item students need to submit.</p>
+<p>Note that Dividni will automatically add course, exam and version information on the OMR sheet during script generation.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
