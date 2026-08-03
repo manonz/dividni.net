@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Canvas Gradebook Utility</title>
+
+<style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:40px;
+    max-width:900px;
+}
+
+h2{
+    margin-top:0;
+}
+
+.section{
+    border:1px solid #cccccc;
+    padding:20px;
+    margin-top:20px;
+    border-radius:6px;
+}
+
+button{
+    margin-top:10px;
+    margin-right:10px;
+    padding:8px 16px;
+}
+
+.hidden{
+    display:none;
+}
+
+label{
+    font-weight:bold;
+}
+
+select{
+    margin-top:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Canvas Gradebook Utility</h2>
+<p>Use this page with a Canvas Gradebook export CSV file to:</p>
+<ul>
+    <li>Generate the ID file required for use with the Dividni OMR Processor to check student IDs from the scan against the class roll.</li>
+	<li>Generate the AUID-to-UPI map file required to send feedback to the class.</li>
+	<li>Merge the graded Dividni scan results with the Canvas Gradebook (for subsequent Canvas Gradebook Import).</li>
+</ul>
+
+<div class="section">
+
+<label>
+Upload your Canvas gradebook file here:
+</label>
+<br><br>
+
+<input type="file" id="gradebookFile" accept=".csv">
+
+</div>
+
+<div id="actions" class="section hidden">
+
+<h3>Actions</h3>
+
+<button id="downloadIDs">
+Download ID file
+</button>
+
+<button id="downloadMap">
+Download AUID-to-UPI map
+</button>
+
+<button id="mergeButton">
+Merge Dividni McqGrader output
+</button>
+
+</div>
+
+<div id="mergeSection" class="section hidden">
+
+<h3>Merge McqGrader Output</h3>
+
+<label>Assessment</label>
+<br>
+
+<select id="assessmentSelect"></select>
+
+<br><br>
+
+<label id="scanUploadLabel">
+Upload scan_result.csv
+</label>
+<br><br>
+
+<input type="file" id="scanFile" accept=".csv" value="">
+
+<br><br>
+
+<label id="progressField"/>
+
+</div>
+
+<script>
+
+//
+// Robust CSV parser
+//
+function parseCSV(text){
+
+    const rows=[];
+    let row=[];
+    let field="";
+    let inQuotes=false;
+
+    for(let i=0;i<text.length;i++){
+
+        const c=text[i];
+
+        if(inQuotes){
+
+            if(c=='"'){
+
+                if(i+1<text.length && text[i+1]=='"'){
+                    field+='"';
+                    i++;
+                }else{
+                    inQuotes=false;
+                }
+
+            }else{
+                field+=c;
+            }
+
+        }else{
+
+            if(c=='"'){
+                inQuotes=true;
+            }
+
+            else if(c==','){
+                row.push(field);
+                field="";
+            }
+
+            else if(c=='\n'){
+                row.push(field);
+                rows.push(row);
+                row=[];
+                field="";
+            }
+
+            else if(c=='\r'){
+            }
+
+            else{
+                field+=c;
+            }
+
+        }
+
+    }
+
+    row.push(field);
+    rows.push(row);
+
+    return rows;
+}
+
+//
+// CSV writer
+//
+function escapeCSV(value){
+
+    value=value==null ? "" : String(value);
+
+    if(value.includes('"')){
+        value=value.replace(/"/g,'""');
+    }
+
+    if(/[",\n]/.test(value)){
+        value='"'+value+'"';
+    }
+
+    return value;
+
+}
+
+function writeCSV(rows){
+
+    return rows.map(r=>r.map(escapeCSV).join(",")).join("\r\n");
+
+}
+
+//
+// Download helper
+//
+function download(filename,text){
+
+    const blob=new Blob([text],{type:"text/plain"});
+
+    const a=document.createElement("a");
+
+    a.href=URL.createObjectURL(blob);
+    a.download=filename;
+
+    document.body.appendChild(a);
+    a.click();
+
+    setTimeout(()=>{
+        URL.revokeObjectURL(a.href);
+        a.remove();
+    },100);
+
+}
+
+let gradebookRows=[];
+let assessmentColumns=[];
+let auidToRow={};
+
+document.getElementById("gradebookFile").addEventListener("change",function(){
+
+    if(!this.files.length)
+        return;
+
+    const reader=new FileReader();
+
+    reader.onload=function(){
+
+        gradebookRows=parseCSV(reader.result);
+
+        assessmentColumns=[];
+        auidToRow={};
+
+        //
+        // Build AUID lookup
+        //
+        for(let r=3;r<gradebookRows.length;r++){
+
+            const auid=(gradebookRows[r][2]||"").trim();
+
+            if(auid!==""){
+                auidToRow[auid]=r;
+            }
+
+        }
+
+        //
+        // Parse assessments
+        //
+        const firstHeader=gradebookRows[0];
+
+        const select=document.getElementById("assessmentSelect");
+
+        select.innerHTML="";
+
+        for(let c=5;c<firstHeader.length;c++){
+
+            const text=firstHeader[c]||"";
+
+            const m=text.match(/^(.*)\((\d+)\)\s*$/);
+
+            if(m){
+
+                const assessmentName=m[1].trim();
+
+                assessmentColumns.push({
+                    name:assessmentName,
+                    column:c
+                });
+
+                const option=document.createElement("option");
+
+                option.value=assessmentColumns.length-1;
+                option.textContent=assessmentName;
+
+                select.appendChild(option);
+
+            }
+
+        }
+
+        document.getElementById("actions").classList.remove("hidden");
+
+    };
+
+    reader.readAsText(this.files[0]);
+
+});
+
+//
+// Option 1
+//
+document.getElementById("downloadIDs").addEventListener("click",function(){
+
+    let out=[];
+
+    for(let r=3;r<gradebookRows.length;r++){
+
+        const name=gradebookRows[r][0]||"";
+        const auid=gradebookRows[r][2]||"";
+
+        out.push(auid+"\t\""+name.replace(/"/g,'""')+"\"");
+
+    }
+
+    download("IDs.txt",out.join("\r\n"));
+
+});
+
+//
+// Option 2
+//
+document.getElementById("downloadMap").addEventListener("click",function(){
+
+    let out=[];
+
+    for(let r=3;r<gradebookRows.length;r++){
+
+        const auid=gradebookRows[r][2]||"";
+        const upi=gradebookRows[r][3]||"";
+
+        out.push(auid+"\t"+upi);
+
+    }
+
+    download("student-list.tsv",out.join("\r\n"));
+
+});
+
+//
+// Reveal merge controls
+//
+document.getElementById("mergeButton").addEventListener("click",function(){
+
+    document.getElementById("mergeSection").classList.remove("hidden");
+
+});
+
+//
+// Merge
+//
+document.getElementById("scanFile").addEventListener("change",function(){
+
+    if(!this.files.length)
+        return;
+
+    const assessment=assessmentColumns[
+        document.getElementById("assessmentSelect").value
+    ];
+
+    if(!assessment){
+
+        alert("Please choose an assessment.");
+
+        return;
+
+    }
+
+    document.getElementById("scanUploadLabel").innerHTML += " ... processing now ...";
+ 
+    const reader=new FileReader();
+
+    reader.onload=function(){
+
+        
+        const scanRows=parseCSV(reader.result);
+
+        for(const row of scanRows){
+
+            if(row.length<2)
+                continue;
+
+            const auid=row[0].trim();
+
+            if(!(auid in auidToRow))
+                continue;
+
+            let total=0;
+
+            for(let i=1;i<row.length;i++){
+
+                const n=parseFloat(row[i]);
+
+                if(!isNaN(n))
+                    total+=n;
+
+            }
+
+            const gradebookRow=auidToRow[auid];
+
+            while(gradebookRows[gradebookRow].length<=assessment.column){
+                gradebookRows[gradebookRow].push("");
+            }
+
+            gradebookRows[gradebookRow][assessment.column]=String(total);
+
+        }
+
+        download(
+            "updated_gradebook.csv",
+            writeCSV(gradebookRows)
+        );
+		document.getElementById("progressField").innerHTML="Updated gradebook sent to your browser for download.";
+		alert("Updated gradebook created and sent to your browser. If you were not prompted to save, look in your downloads folder!");
+
+    };
+
+    reader.readAsText(this.files[0]);
+
+});
+
+</script>
+
+</body>
+</html>
