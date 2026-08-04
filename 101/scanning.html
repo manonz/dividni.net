@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.0rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>Scanning the OMR sheets</h1>
+<p>Here's what to do once you have collected the OMR sheets from the students after the test or exam.</p>
+<h2>Scanning</h2>
+<p>Before you scan, it's a good idea to:</p>
+<ul>
+   <li>Count the number of OMR sheets that the students submitted.</li>
+   <li>Flatten out any "dog ears" and have the corners in which the staples used to be all point the same way. These corners are where adjacent sheets are most likely to get caught by their neighbours, leading to skipped scans and document feeder jams.</li>
+   <li>Make sure all OMR sheets are "scan side up" so you don't inadvertently end up scanning the back of the sheets.</li>
+</ul>
+<p>We scan on the University of Auckland's networked FollowMe printer/scanner/photocopiers, but have also tried other scanners and have yet to find one that wouldn't work with Dividni. We recommend the following settings:</p>
+<ul>
+   <li>Grayscale. Colour also works, but you end up with vastly larger PDF files, which are a pain especially for large classes.</li>
+   <li>Single-sided. This is a must as the back side of the OMR sheets doesn't really contain any meaningful information.</li>
+   <li>300 dpi resolution. This is a bit flexible - so if your scanner can only do 200 or 400 dpi, that should be mostly fine, too.</li>
+   <li>Scan to PDF.</li>
+</ul>
+<p>On University of Auckland FollowMe printer/scanner/photocopiers, log in and select Scan. You then have the choice between scanning to e-mail, to OneDrive, to Dropbox, or to Google Drive. Any of these is fine, although we'd recommend scanning in batches of no more than 20 sheets when using e-mail. For the other destinations, you can scan in larger batches, depending on how many sheets you can fit into the automatic document feeder of the scanner without jamming them in (if in doubt, use fewer). The FollowMe scanner usually handle batches of about 30-40. The orientation of the sheets in the scanning does not matter as Dividni recognises the orientation from the position of the L-shaped marker on the sheet. But we recommend that you have all dog-eared corners point away from the automatic document feeder to avoid jams.</p>
+
+<p>Scanning in batches means that you will end up with a separate PDF file for each batch. Hint: Keep the OMR sheets of the batches separate - this makes it easier to locate any missing scans later.</p>
+
+<p>If you are scanning to OneDrive, Dropbox, or Google Drive, the software that places the scans there - PaperCut MF - needs your permission to do so. If you haven't already given permission or the scan's don't appear automatically, you should find an e-mail from PaperCut MF in your inbox requesting permission. Follow the instructions in the e-mail, and see your scans appear in the folder <tt>Apps\Scans for PaperCut MF</tt> soon thereafter. Once you have given permission once, you shouldn't have to give permission again for a while.</p>
+
+<p>Check whether the number of pages in the PDFs add up to the total number of OMR sheets you had. If not, check each batch for sheets that may have been missed. Also check each PDF for any pages that may not have been fully scanned (the three square markers and the L-shaped marker must be fully visible). If in doubt, re-scan the affected batch.</p>
+
+<h2>Combining the PDF files from the scans</h2>
+<p>From hereon, it's generally easier to work with larger PDF files rather than smaller ones, and combining the PDFs from our batches is the logical next step. There are several ways to do this, but if you have Adobe Acrobat (as most University of Auckland staff will), using this to combine is the easiest way.</p>
+<p>Locate the PDF files you wish to combine on your machine, e.g., with Windows Explorer. For example, in the screenshot below, I have highlighted the files <tt>scan1.pdf</tt> and 
+<tt>scan2.pdf</tt> that we will combine in this example:</p>
+<p><img src="images/windows_explorer_pdf_combine_sources.png" style="height: 30%"/></p>
+<p>Now open Adobe Acrobat and maximise its window. Try and locate the "Combine Files" tool - you should see it near the top of the window:</p>
+<p><img src="images/adobe_start_window.png" style="height: 20%"/></p>
+<p>Alternatively, click on "Tools" and locate it there:</p>
+<p><img src="images/adobe_tools_window.png" style="height: 20%"/></p>
+<p>Click on the entry to open the tool, and you should see something like the following window:</p>
+<p><img src="images/adobe_combine_window_empty.png" style="height: 35%"/></p>
+<p>As the window suggests, use the "Add Files" button or menu entry to add the two files from Windows Explorer - or simply drag and drop them here. It all works equally well.</p>
+<p>You will now see the two files (drag them if you want to change the order in which they will be combined). You'll also notice that the "Combine" button on the top right is 
+now no longer greyed out:</p>
+<p><img src="images/adobe_combine_window_2files.png" style="height: 35%"/></p>
+<p>Click on the blue "Combine" button and let the magic happen. Acrobat now combines the two files into a "Binder" PDF file and opens it for you straight away:</p>
+<p><img src="images/adobe_binder_window.png" style="height: 35%"/></p>
+<p>Of course, you can combine any number of files - not just two. Note however that the combined size should be under 500MB, the maximum file size for the OMR Processor.</p>
+<p>BTW: Don't worry if your OMR sheet scan appears upside down or slightly rotated as in this image. This is OK, Dividni's OMR Processor sorts this out automagically later.</p>
+<p>Simply click on the "Save" symbol to save the binder PDF under a name of your choice in a place where you can find it again for further processing. Do a final check to ensure the number of pages in the combined PDF corresponds to the number of OMR sheets you collected.</p>
+
+<h2>Scan post-processing</h2>
+<p>This happens in the <a href="https://dividni.online/OmrProcessor/" target="_blank">OMR Processor</a>.</p>
+<p>Before heading to the OMR Processor, have the combined PDF scan file from the previous step ready, as well as the <tt>IDs.txt</tt> file that maps student ID numbers to names. If you haven't got the latter at hand yet, <a href="scanning-preparations.html" target="_blank">here are instructions</a> on how to obtain it.</p>
+<p>The OMR processing happens in two steps:</p>
+
+<h3>Step 1: Automatic ID and answer choice capture</h3>
+<p>In this first step, you upload the PDF with the scanned OMR sheets. The Dividni OMR Processor will now try and extract the student ID numbers, version numbers, and student answers from each OMR sheet. This can take a few minutes for large classes - a rough rule of thumb for tests with 20 questions is a minute or two per 100 students.</p>
+<p>The outcome of this first step will not be perfect:</p>
+<ul>
+   <li>Extremely weakly shaded bubble marks may have been missed.</li>
+   <li>Students may have shaded one bubble, crossed it out and then shaded another.</li>
+   <li>Students may have entered their ID incorrectly or may not have entered it at all.</li>
+   <li>Students may have entered two answers for a question.</li>
+   <li>Students may have skipped questions.</li>
+</ul> 
+<p>We address these issues in a second step.</p>
+
+<h3>Step 2: OMR post-processing</h3>
+<p>After the first step, the Dividni OMR Processor allows you to upload a file with student IDs and names. Use the <tt>IDs.txt</tt> file here. While this is optional (for cases where you do not have a class list available), it is very strongly recommended because it allows the student IDs from the OMR sheets to be verified, and any problems to be sorted within the OMR Processor environment. The explanations below assume that you will have uploaded the file.</p>
+
+<p>One you have uploaded the file, the OMR Processor will show you an image of the scan of either:</p>
+<ul>
+   <li>The first OMR sheet where the OMR Processor has detected a problem, or</li>
+   <li>the last OMR sheet, if there were no problems detected.</li>
+</ul>
+<p>The OMR Processor regards an OMR sheet as problem-free if:</p>
+<ul>
+   <li>The student ID captured from the sheet is in <tt>IDs.txt</tt>,</li>
+   <li>the sheet version number captured has a correct checksum (nothing you need to worry about), and</li>
+   <li>there is exactly one answer for each of the questions (the OMR Processor detects automatically how many answers there should be based on how many answers the class as a whole gave).</li>
+</ul>
+<p>It will flag a problem if any of the following occur</p>
+<ul>
+   <li>The student ID captured from the sheet is <b>not</b> in <tt>IDs.txt</tt>. In this case, the OMR Processor checks whether there is a similar ID in the file. If there is, it will suggest this ID in a message along with the name of the student it belongs to. Clicking on the message then corrects the ID on the sheet. Otherwise, you can click on what you believe the correct digit(s) to be. Alternatively, you can use the search field to the top right to search for (parts) of names or ID numbers. Clicking on any of the search results that appear below the search fields enters that information on the scan.</li>
+   <li>The sheet version number captured has an incorrect checksum (should not normally happen unless someone brought their own sheet).</li>
+   <li>There are questions for which the first step did not detect an answer. In this case, check whether the first step may have overlooked a too-faint mark on the OMR sheet. A simple click on the answer will recognise this. If the question is truly unanswered, there is no need to do anything.</li>
+   <li>There are multiple answer bubbles shaded for the same question. Where student intent is clear, you can untick the one that the student perhaps tried to cross out and tick the one that the student actually wanted. Where there is no clear intent, you may wish to untick both answers, or make a manual note wrt. potential partial marks to be applied manually later (not recommended).</li>
+</ul>
+<p>ID problems get flagged by means of a warning triangle and a message in red. Question-related issues get flagged with a message that states the number of questions answered vs. expectation, a list of "problem questions" at the bottom, and a purple circle around each affected question number. Problem answers have a red frame around them.</p>
+
+<p>Once all red and purple has disappeared from a sheet / page, use the "&gt;&gt;" button to advance to the next problematic OMR sheet, or the "&gt;" button to advance to the next OMR sheet. Likewise, "&lt;" and ""&lt;&lt;" will let you move to the last / last problematic sheet.</p>
+
+<p>If the "&gt;&gt;" button does not show, head for the blue button at the top and download and save the processed scan result.</p>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -30,7 +30,7 @@
 
         h2 {
             margin-bottom: 0.5rem;
-            font-size: 2.5rem;
+            font-size: 2.0rem;
         }
 		
         p {
@@ -52,7 +52,7 @@
 <body>
 <h1>After (or before) the test / exam: Get prepared for OMR sheet scanning and grading</h1>
 <p>There are a number of things you can prepare before the test or exam date in order to expedite grading and giving feedback after the test or exam.</p>
-<h3>Getting ID-name and ID-login name mapping files ready</h3>
+<h2>Getting ID-name and ID-login name mapping files ready</h2>
 <p>We're assuming here that your class is a Canvas class and that you know how to export and import a Canvas Gradebook in CSV format.</p>
 <p>To support your scan post-processing and eventual feedback mailout you need a file with student names and university ID numbers, and one with university ID numbers and login names, respectively. To expedite scan post-processing and grade return, you can prepare these in advance. Here is how:</p>
 <ul>
@@ -64,7 +64,7 @@
    </ul>
 </ul>
 
-<h3>Installing the software required to give feedback to the students (University of Auckland only)</h3>
+<h2>Installing the software required to give feedback to the students (University of Auckland only)</h2>
 <p>In order to give feedback to students, the command-line version of Dividni contains a tool that allows you to e-mail feedback to the students. The text files with the feedback will be in the <tt>result</tt> folder of the ZIP file that will be returned to you by the McqGrader (the online interface that lets you grade the scanned OMR sheets in conjunction with the ground truth answers). Using this tool (Windows PCs only - ask us for Linux / Mac) requires a bit of preparation as follows (UoA staff only):</p>
 <ol>
    <li>Installation of the latest <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0" download>Microsoft .NET SDK</a>. You'll probably want the x64 Windows installer. Note that unless you have software installation privileges for your PC, you will need to request this from Connect at the moment. Note that the current version of the SDK is 10.0 and that the version 4.8 SDK available via Software Center on your PC is too old (we have requested an update there).</li>
@@ -73,6 +73,7 @@
    <li>Open the ZIP file, highlight all files with CTRL+A, then copy them with CTRL+C, and paste them with CTRL+V into the <tt>Dividni</tt> folder you created above.</li>
    <li>Right-click on a blank area in the <tt>Dividni</tt> folder and select "Open in Terminal".</li>
    <li>In the black terminal window that opens, enter the command <tt>dir | Unblock-File</tt> and execute it with the Enter key.</li>
+   <li>While you are still in the terminal window, give PowerShell the permission to run <tt>.ps1</tt> scripts by entering the command <tt>Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</tt> and executing it with the Enter key.</li>
    <li>Download the <a href="mailout.ps1" download>mailout powershell script (<tt>mailout.ps1</tt>)</a>.</li>
    <li>Unblock <tt>mailout.ps1</tt> as follows:</li>
    <ol>
@@ -84,7 +85,7 @@
    <li>For later: <b>Once you have done your scanning and grading</b>, you can copy the <tt>mailout.ps1</tt> script into the folder that also contains the <tt>result</tt> folder of the extracted ZIP file from the McqGrader. Also copy the <tt>student-list.tsv</tt> file from above into that same folder. You can now start the mailout by right-clicking on <tt>mailout.ps1</tt>. It will ask you about your course and your assessment, and will then do the mailout for you. (Note: Your machine must be on VPN or the wired university network for this, not just on UoA-WiFi!)</li>
 </ol>
 
-<h3>Giving the scanning software permission to access your OneDrive, Dropbox or Google Drive (University of Auckland only)</h3>
+<h2>Giving the scanning software permission to access your OneDrive, Dropbox or Google Drive (University of Auckland only)</h2>
 <p>Last but not least (UoA staff only), doing a test scan of an arbitrary document a few days before the assessment speeds things up on the day, at least if you're planning to scan to OneDrive, Dropbox or Google Drive from one of the FollowMe printer/scanner/copiers that the university has pretty much everywhere. The reason is that the software that places the scans there - PaperCut MF - needs your permission to do so. By scanning the document to OneDrive, Dropbox or Google Drive, you trigger this approval process. A few minutes after scanning, you should find an e-mail from PaperCut MF in your inbox requesting permission. Follow the instructions in the e-mail, and see your scanned document appear in the folder <tt>Apps\Scans for PaperCut MF</tt> soon thereafter. Once you have given permission, you shouldn't have to give permission again for a while.</p>
 </body>
 </html>
