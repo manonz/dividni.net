@@ -50,15 +50,35 @@
     </style>
 </head>
 <body>
-<h1>After the test / exam: Get prepared for OMR sheet scanning</h1>
-<p>To get an account to access the Dividni MCQ Exam Generator Web UI, please contact Ulrich Speidel <a href="mailto:u.speidel@auckland.ac.nz" target="_blank" rel="noopener">u.speidel@auckland.ac.nz.</a></p>
-<p>We'll give you a login and password. This is different from your University of Auckland SSO login and may be shared among a teaching team.</p>
-<p>To access the Dividni MCQ Exam Generator Web UI, head to:</p>
-<p><a href="https://www.dividni.auckland.ac.nz" target="_blank">https://www.dividni.auckland.ac.nz</a></p>
-<p>Note: <strong>You will need to be University of Auckland staff and either be on the university network or the university VPN</strong> (if away from campus).</p>
-<p>Your account will come pre-populated with a question bank for DIVIDNI 101 and a sample test / exam and the associated documents.</p>
-<p>Rather than modifying the question bank and sample test / exam and documents for your own test / exam, we suggest strongly that you copy the cover (prologue), answer sheet and epilogue documents you want to use (via the "Manage" button next to them) and create a new question bank and test / exam to work with.</p>
-<h3>Not University of Auckland staff?</h3>
-<p>Contact us to see whether we may be able to help you.</p>
+<h1>After (or before) the test / exam: Get prepared for OMR sheet scanning and grading</h1>
+<p>We're assuming here that your class is a Canvas class and that you know how to export and import a Canvas Gradebook in CSV format.</p>
+<p>To support your scan post-processing and eventual feedback mailout you need a file with student names and university ID numbers, and one with university ID numbers and login names, respectively. To expedite scan post-processing and grade return, you can prepare these in advance. Here is how:</p>
+<ul>
+   <li>If you have access to Canvas, grab a gradebook export (CSV file) from the Grades menu of your class in Canvas. Then upload the CSV file and use the left and centre button to generate the files <tt>IDs.txt</tt> (for the scan post-processing) and <tt>student-list.tsv</tt> on <a href="csv_processor.html" target="_blank">the Dividni Canvas Gradebook Utility page</a>.</li>
+   <li>If you do not have access to Canvas (i.e., you manage your grades differently), you can generate the two files as follows:</li>
+   <ul>
+      <li><tt>IDs.txt</tt> is a tab-separated file without headers, in which the first column contains the student ID number and the second column contains the student's name (ideally enclosed in double quotes just in case students have managed to smuggle tabs into their names). If you have a class list in CSV or Excel format, you can create this file easily from the spreadsheet and save it as "Text (Tab delimited) (*.txt)".</li>
+      <li><tt>student-list.tsv</tt> is also a tab-separated file without headers, in which the first column contains the student ID number and the second column contains the student's login name (which we assume is identical to the username in their official university e-mail address). If you have a class list in CSV or Excel format, you can create this file easily from the spreadsheet and save it as "Text (Tab delimited) (*.txt)" - but change the extension from <tt>.txt</tt> to <tt>.tsv</tt> when saving the file.</li>
+   </ul>
+</ul>
+<p>In order to give feedback to students, the command-line version of Dividni contains a tool that allows you to e-mail feedback to the students. The text files with the feedback will be in the <tt>result</tt> folder of the ZIP file that will be returned to you by the McqGrader (the online interface that lets you grade the scanned OMR sheets in conjunction with the ground truth answers). Using this tool (Windows PCs only - ask us for Linux / Mac) requires a bit of preparation as follows (UoA staff only):</p>
+<ol>
+   <li>Installation of the latest <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0" download>Microsoft .NET SDK</a>. You'll probably want the x64 Windows installer. Note that unless you have software installation privileges for your PC, you will need to request this from Connect at the moment. Note that the current version of the SDK is 10.0 and that the version 4.8 SDK available via Software Center on your PC is too old (we have requested an update there).</li>
+   <li>Next, create a folder called <tt>Dividni</tt> in your <tt>C:\</tt> directory.</li>
+   <li>Then, download the Dividni ZIP file from <a href="https://dividni.com/latest/" download>here</a>.</li>
+   <li>Open the ZIP file, highlight all files with CTRL+A, then copy them with CTRL+C, and paste them with CTRL+V into the <tt>Dividni</tt> folder you created above.</li>
+   <li>Right-click on a blank area in the <tt>Dividni</tt> folder and select "Open in Terminal".</li>
+   <li>In the black terminal window that opens, enter the command <tt>dir | Unblock-File</tt> and execute it with the Enter key.</li>
+   <li>Download the <a href="mailout.ps1" download>mailout powershell script (<tt>mailout.ps1</tt>)</a>.</li>
+   <li>Unblock <tt>mailout.ps1</tt> as follows:</li>
+   <ol>
+      <li>Right-click on the file and navigate to the bottom of the context menu.</li>
+      <li>Click on "Show more options ..."</li>
+	  <li>At the bottom of the new menu, click on "Properties".</li>
+	  <li>In the menu that opens, tick the box next to "Unblock" and click on OK.</li>
+   </ol>
+   <li>For later: <b>Once you have done your scanning and grading</b>, you can copy the <tt>mailout.ps1</tt> script into the folder that also contains the <tt>result</tt> folder of the extracted ZIP file from the McqGrader. Also copy the <tt>student-list.tsv</tt> file from above into that same folder. You can now start the mailout by right-clicking on <tt>mailout.ps1</tt>. It will ask you about your course and your assessment, and will then do the mailout for you. (Note: Your machine must be on VPN or the wired university network for this, not just on UoA-WiFi!)</li>
+</ol>
+
 </body>
 </html>
