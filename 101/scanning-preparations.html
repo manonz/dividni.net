@@ -64,7 +64,7 @@
    </ul>
 </ul>
 
-<h2>Installing the software required to give feedback to the students (University of Auckland only)</h2>
+<h2 id="mailout">Installing the software required to give feedback to the students (University of Auckland only)</h2>
 <p>In order to give feedback to students, the command-line version of Dividni contains a tool that allows you to e-mail feedback to the students. The text files with the feedback will be in the <tt>result</tt> folder of the ZIP file that will be returned to you by the McqGrader (the online interface that lets you grade the scanned OMR sheets in conjunction with the ground truth answers). Using this tool (Windows PCs only - ask us for Linux / Mac) requires a bit of preparation as follows (UoA staff only):</p>
 <ol>
    <li>Installation of the latest <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0" download>Microsoft .NET SDK</a>. You'll probably want the x64 Windows installer. Note that unless you have software installation privileges for your PC, you will need to request this from Connect at the moment. Note that the current version of the SDK is 10.0 and that the version 4.8 SDK available via Software Center on your PC is too old (we have requested an update there).</li>
@@ -82,7 +82,7 @@
 	  <li>At the bottom of the new menu, click on "Properties".</li>
 	  <li>In the menu that opens, tick the box next to "Unblock" and click on OK.</li>
    </ol>
-   <li>For later: <b>Once you have done your scanning and grading</b>, you can copy the <tt>mailout.ps1</tt> script into the folder that also contains the <tt>result</tt> folder of the extracted ZIP file from the McqGrader. Also copy the <tt>student-list.tsv</tt> file from above into that same folder. You can now start the mailout by right-clicking on <tt>mailout.ps1</tt>. It will ask you about your course and your assessment, and will then do the mailout for you. (Note: Your machine must be on VPN or the wired university network for this, not just on UoA-WiFi!)</li>
+   <li>For later: <b>Once you have done your scanning and grading</b>, you can copy the <tt>mailout.ps1</tt> script into the folder that also contains the <tt>result</tt> folder of the extracted ZIP file from the MCQ Grader. Also copy the <tt>student-list.tsv</tt> file from above into that same folder. You can now start the mailout by right-clicking on <tt>mailout.ps1</tt>. It will ask you about your course and your assessment, and will then do the mailout for you. (Note: Your machine must be on VPN or the wired university network for this, not just on UoA-WiFi!)</li>
 </ol>
 
 <h2>Giving the scanning software permission to access your OneDrive, Dropbox or Google Drive (University of Auckland only)</h2>

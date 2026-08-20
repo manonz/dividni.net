@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.0rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>Grading the OMR scan results</h1>
+<p>The output of the <a href="https://dividni.online/OmrProcessor/" target="_blank">Dividni OMR Processor</a> after the post-processing step is a text file which you download from the OMR processor page. This will generally be a file whose name ends in <tt>...updated.txt</tt> or somesuch.</p>
+<p>From preparing your Dividni test, you should also still have a ZIP file with the ground truth answers that the Dividni Exam Generator web UI made you download just before the PDF file(s) with the actual test/exam scripts. This file will normally have a complex name that just ends in <tt>...-Answers.zip</tt> and identifies the test or exam as well as the date and time on which the answers were generated.</p>
+<p>Got both of these? Then you have all the ingredients you need.</p>
+<p>Head to the <a href="https://dividni.online/McqGrader/" target="_blank">Dividni MCQ Grader</a> page and upload those two files. Before upload, you will also have the opportunity to tick three checkboxes:</p>
+<ul>
+   <li><b>Include feedback in results</b>: By default, the feedback file that the Dividni MCQ Grader generates for each student only identifies the answer option that the student chose for each question. By ticking this box, the Dividni MCQ Grader also includes a "Well done!" or an "Incorrect" alongside each answer.</li>
+   <li><b>Include correct answer in feedback</b>: Ticking this option also tells the student what the correct answer option would have been for questions for which they chose the wrong answer. We generally recommend not ticking this as it tends to encourage memorising of answers downstream as opposed to working them out.</li>
+   <li><b>Use McqGraderLite</b>: This option is only for those who use Dividni OMR sheets <i>without</i> full individualisation. In fully individualised Dividni tests/exams, the OMR sheet version number printed on and then scanned from the OMR sheet includes an added two-digit checksum, whereas the ground truth answer files only contain the base version number without the checksum in their filename. Users who have generated their own multi-version scripts and who have produced custom OMR sheets and ground truth answer files <a href="https://dividni.online/OmrPrintUoA/">here</a> have sheets without checksums. Ticking this box instructs the MCQ Grader not to expect a checksum from the OMR sheet in this case and match OMR sheet version number to ground truth answer file name as is.</li>
+</ul>
+<p>A few seconds after hitting the "Upload" button, the MCQ Grader offers you a download link to a ZIP file with the grading results. Download this file and extract it.</p>
+<p>Inside the ZIP file, you will find:</p>
+<ul>
+   <li>A folder <tt>result</tt> with a feedback text file for each student, with the filename being the student ID followed by <tt>.txt</tt>. UoA staff with Windows machines: You can use this folder to give feedback to your students at question level.</li>
+   <li>A text file with the file name extension <tt>.log</tt>. This contains, in each line, the student ID followed by a tab character followed by the version number (with checksum where applicable) of the student's OMR sheet, followed again by a tab character, and eventually the number of marks that the student scored.</li>
+   <li>A CSV file (comma-separated spreadsheet file) that opens with MS Excel. Each row corresponds to one student. In its first column, this file has the student ID, the remaining columns in each row are the marks that the student earned for each question, in order of question number. Note there is no column for total marks. This file has three primary uses:
+   <ol>
+      <li>Marks adjustment: For example, if one question turns out to have had no correct answers, or more than one correct answer, or was ambiguous, you may wish to give students the benefit of the doubt and full marks for this question by entering the full number of marks for the question into the column in all rows of the file.</li>
+	  <li>Mark upload to Canvas (UoA only - and institutions whose Canvas gradebook exports have the same format as those at UoA): <a href="grade_upload.html" target="_blank">See how you can merge this CSV file with a CSV file from the Canvas gradebook download in order to upload marks to the Canvas LMS</a>.</li>
+	  <li>Analyse the difficulty of your questions by adding up the marks in each column, dividing by the number of marks for the question and the number of OMR sheets scanned, and expressing the result as a percentage.</li>	  
+   </ol>   
+   </li>
+</ul>
+<a href="https://youtu.be/3-z55NWo9WY" target="_blank">This video</a> shows how to grade, explains the output that MCQ Grader returns, and demonstrates the difference between the three possible levels of feedback.</li>    
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.0rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+</head>
+<body>
+<h1>Grade upload to Canvas</h1>
+<p>You can prepare for this before the test or exam date in order to expedite grading and giving feedback after the test or exam.</p>
+<p>We're assuming here that your class is a Canvas class and that you know how to export and import a Canvas Gradebook in CSV format.</p>
+<p>If you have access to Canvas, ensure that the test or exam has been configured as an "Assignment" there. Then grab a gradebook export (CSV file) from the Grades menu of your class in Canvas and save it to your computer.</p>
+<p>Once you have completed grading with the MCQ Grader and have the CSV file with each student's marks for each question available, proceed as follows:</p>
+<ol>
+  <li>Upload the gradebook export CSV file on <a href="csv_processor.html" target="_blank">the Dividni Canvas Gradebook Utility page</a>.</li>
+  <li>Click on the right button "Merge Dividni MCQ Grader Output".</li>
+  <li>This adds a new section "Merge MCQ Grader Output". It first shows a drop-down list of assessments. Choose the test or exam you want to upload the marks for.</li>
+  <li>Below the drop-down list, where it says "Upload scan_result.csv", upload the CSV file from the ZIP file that MCQ Grader gave you.</li>
+  <li>The page will now download an updated gradebook CSV file to your browser (look in the download folder if it does not prompt you where to save it).</li>
+  <li>Go to the Grades menu of your class in Canvas and click on "Import" at the top right. Choose the updated gradebook CSV and hit "Upload data". Then follow the instructions that Canvas gives you.</li>
+</ol>
+
+<h2>Giving feedback to the students (University of Auckland users on Windows machines only)</h2>
+<p>Make sure you have installed the required software and set it up as described <a href="scanning-preparations.html#mailout" target="_blank">here</a>. Copy the <tt>mailout.ps1</tt> script into the folder that also contains the <tt>result</tt> folder of the extracted ZIP file from the MCQ Grader. Also copy the <tt>student-list.tsv</tt> file you have created from your gradebook export CSV file on <a href="csv_processor.html" target="_blank">the Dividni Canvas Gradebook Utility page</a> into that same folder. You should now have a folder that contains:</p>
+<ol>
+   <li>The <tt>result</tt> folder of the extracted ZIP file from the MCQ Grader with the individual feedback text files.</li>
+   <li>The <tt>mailout.ps1</tt> script.</li>
+   <li>The <tt>student-list.tsv</tt> file.</li>
+</ol>
+<p>For the following, ensure you are on a wired connection at the university or on university VPN.</p>
+<p>In a Windows explorer window, navigate to that folder. Right-click on <tt>mailout.ps1</tt> and select "Run with PowerShell". A black terminal window will open. The script will prompt you to enter your course code and then your assessment title. Enter these and - if all has been correctly configured - watch the magic as your students will be e-mailed one by one. Note the e-mail will appear to come from <tt>postie.dividni@aucklanduni.ac.nz</tt> rather than your own e-mail address.</p>
+
+
+</body>
+</html>
