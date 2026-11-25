@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dividni</title>
+   <meta name="description"
+         content="Dividni helps to create individualized assessments. Individualization encourages students to engage in concept-oriented discussions rather than mere exchange of answers. It also enables an instructor to repeat an assessment activity with a different set of questions, thereby reinforcing student learning. In addition, individualization renders any blind copying in an assessment ineffective. Consequently, it is seen as a positive approach to mitigating collusion and plagiarism." />
+   <meta name="keywords" content="Dividni, Individualized Assessment, Personalized Assessment, Examination, Assignment, Concept-oriented discussions, Learning, Plagiarism, Cheating Mitigation" />
+   <link rel="icon" type="image/svg+xml" href="https://dividni.com/images/Dividni-Logo.svg" />
+   <link rel="mask-icon" href="https://dividni.com/images/Dividni-Logo-Black.svg" color="red">
+   <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="apple-mobile-web-app-capable" content="yes" />
+   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+   <link rel="apple-touch-icon-precomposed" href="https://dividni.com/images/logo-192x192.png" />
+   <link rel="icon" type="image/png" href="https://dividni.com/images/logo-192x192.png" />
+    <style>
+        body {
+            margin: 10px;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            height: 100vh;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+		
+        p {
+            color: #333;
+            line-height: 1.6;
+        }
+		
+		
+		.question {
+		    position: relative;
+            left: 30px;
+            border: 3px solid #900000;
+			width: 50%;
+			padding: 10px;
+		}
+
+    </style>
+	<script language="javascript">
+	    var corrects;
+		var incorrects;
+		
+		function binco(n, k) {
+		  if (Number.isNaN(n) || Number.isNaN(k)) return NaN;
+		  if (k < 0 || k > n) return 0;
+		  if (k === 0 || k === n) return 1;
+		  if (k === 1 || k === n - 1) return n;
+
+		  if (n - k < k) {
+			k = n - k;
+		  }
+
+		  let res = 1;
+		  for (let i = 0; i < k; i++) {
+			res *= (n - i);
+			res /= (i + 1);
+		  }
+
+		  return Math.round(res);
+		}
+		
+	    function update() {
+		    corrects = Number(document.getElementById("corrects").value);
+		    incorrects = Number(document.getElementById("incorrects").value);
+			if (incorrects >= 4) {
+    			nmbrDistinctTruth = corrects * binco(incorrects, Number(4));
+	    		nmbrTotalTruth = nmbrDistinctTruth * 5 * 4 * 3 * 2;
+		    	document.getElementById("nmbrDistinctTruth").innerHTML = nmbrDistinctTruth;
+			    document.getElementById("nmbrTotalTruth").innerHTML = nmbrTotalTruth + " (incl. permutations of answer option order)";
+		    }
+			else
+			{
+			    document.getElementById("nmbrDistinctTruth").innerHTML = "insufficient number of incorrect answer options for truth question (min. 4)";
+			    document.getElementById("nmbrTotalTruth").innerHTML = "insufficient number of incorrect answer options for truth question (min. 4)";
+			}
+			if (corrects >= 3 && incorrects >= 3) {
+			   nmbrDistinctXyz = binco(corrects + incorrects, 3);
+			   document.getElementById("nmbrDistinctXyz").innerHTML = nmbrDistinctXyz;
+			   nmbrTotalXyz = nmbrDistinctXyz * 6;
+			   document.getElementById("nmbrTotalXyz").innerHTML = nmbrTotalXyz  + " (incl. permutations of statement order)";;
+			   nmbrTotalXyzAll = nmbrTotalXyz * 2; // two answer schemes
+			   document.getElementById("nmbrTotalXyzAll").innerHTML = nmbrTotalXyzAll;
+			}
+			else
+			{
+			   if (corrects < 3) { 
+				   document.getElementById("nmbrDistinctXyz").innerHTML = "insufficient number of true statements for an XYZ question";
+				   document.getElementById("nmbrTotalXyz").innerHTML = "insufficient number of true statements for an XYZ question";
+				   document.getElementById("nmbrTotalXyzAll").innerHTML = "insufficient number of true statements for an XYZ question";
+			   }
+			   else
+			   {
+				   document.getElementById("nmbrDistinctXyz").innerHTML = "insufficient number of false statements for an XYZ question";
+				   document.getElementById("nmbrTotalXyz").innerHTML = "insufficient number of false statements for an XYZ question";
+				   document.getElementById("nmbrTotalXyzAll").innerHTML = "insufficient number of false statements for an XYZ question";
+			   }
+			}
+		}
+	</script>
+</head>
+<body onload="update();">
+<h1>Parameterised questions</h1>
+<h2>How many versions does my Dividni question produce?</h2>
+<p>Clearly, the more entries you have in your "correct" and your "incorrect" pools, the larger the variety of questions that can result. The following calculator shows you how many versions you might expect:</p>
+<p>
+<table>
+    <tr><th align="left">Number of options in "correct" pool:</th><td><input type="number" min="1" max="100" step="1" value="3" id="corrects" onchange="update()" /></td></tr>
+	<tr><th align="left">Number of options in "incorrect" pool:</th><td><input type="number" min="3" max="100" step="1" value="4" id="incorrects" onchange="update()" /></td></tr>
+	<tr><th align="left">Number of distinct truth question versions:</th><td id="nmbrDistinctTruth"></td></tr>
+	<tr><th align="left">Total number of truth question versions:</th><td id="nmbrTotalTruth"></td></tr>
+	<tr><th align="left">Number of distinct XYZ question statement sets:</th><td id="nmbrDistinctXyz"></td></tr>
+	<tr><th align="left">Total number of XYZ question statement sets:</th><td id="nmbrTotalXyz"></td></tr>
+	<tr><th align="left">Total number of XYZ question versions:</th><td id="nmbrTotalXyzAll"></td></tr>
+</table>
+</p>
+
+<p>Questions with small pool sizes have two disadvantages: Firstly, a student with sufficient "peripheral vision" might spot the fact that most options repeat in their neighbourhood, and that the stronger students sitting in the vicinity only ever tick two or three of the options in a truth question - which then reveals that the four-or-so remaining ones are the false options, and that therefore, these are also false in the student's own script version. Secondly, students reviewing past test versions a semester or year later quickly cotton onto the fact that these options can be memorised. So these questions don't age well.</p>
+
+<p>An even better option than large pools are <i>parameterised questions</i>, but these require some programming skill - or the equivalent in terms of vibe coding with AI these days.</p>
+
+<h2>Parameterised questions</h2>
+<p>Behind every Dividni question sits a code file written in a programming language called C# (pronounced "C sharp"). The following shows a simple example for a truth question.</p>
+
+<pre>
+using System;
+namespace Utilities.Courses
+{
+   public partial class QHelper : IQHelper
+   {
+      public static QuestionBase IceCreamTruthQuestion(Random random, bool isProof)
+      {
+         var q = new TruthQuestion(random, isProof);
+         q.Id = "IceCreamTruthQuestion";
+         q.Marks = 3;
+         q.Stem = @"<p>Certain types of red food colouring are banned in some countries.</p> 
+            <p>Which of the following ice cream flavours might contain a lot of red food colouring
+            and might therefore fall under a ban?</p>
+            ";
+         q.AddCorrects(@"Cherry");
+         q.AddCorrects(@"Strawberry");
+         q.AddCorrects(@"Watermelon");
+         q.AddCorrects(@"Raspberry");
+         q.AddCorrects(@"Cranberry");
+		 
+         q.AddIncorrects(@"Vanilla");
+         q.AddIncorrects(@"Lemon");
+         q.AddIncorrects(@"Hazelnut");
+         q.AddIncorrects(@"Straciatella");
+         q.AddIncorrects(@"Peppermint");
+         q.AddIncorrects(@"Banana");
+
+         return q;
+      }
+
+   }
+} 
+</pre>
+
+<p>Even if you have never programmed before, you can probably make out the key ingredients here:</li> 
+
+<ul>
+    <li>The references to <code>IceCreamTruthQuestion</code> name the question.
+    </li>
+	<li>The line <code>q.Marks = 3;</code> tells Dividni that this question is worth three marks.
+    </li>
+	<li>The line starting with <code>q.Stem = @"<p>Certain types of ...</code> defines the question stem (the common part of the question).</li>
+	<li>Lines like <code>q.AddCorrects(@"Cherry");</code> add the correct answer options, and lines like <code>q.AddIncorrects(@"Hazelnut");</code> add the incorrect ones.</li>
+</ul>
+<p>The rest is just boring but necessary stuff that surrounds the key ingredients. If we change the line <code>var q = new TruthQuestion(random, isProof);</code> to <code>var q = new XyzQuestion(random, isProof);</code>, we get an XYZ question.</p>
+
+<h2>Parameterising a question</h2>
+<p>In the example above, we use fixed values for the question stem and the correct and incorrect answer options. When we parameterise a question, it means generating the question stem and / or the answer options / statements on the fly based on parameter values provided by a random generator. This is a particularly attractive option in subjects where answering a question might involve a calculation, such as STEM subjects, business or at times medicine.</p>
+
+<p>For example, consider a truth question where we might want to ask students to work out the missing side of a rectangle with a given area. In this case, we can generate two random numbers X and Y for the length of the sides, and compute the area A=X*Y. In our question stem, we can then include A and one of the lengths, say X. Our correct pool gets one entry only (Y), and our incorrects pool at least four options stating lengths other than Y.</p>
+
+<p>We can code such a question as follows:</p>
+
+<pre>
+using System;
+namespace Utilities.Courses
+{
+   public partial class QHelper : IQHelper
+   {
+      public static QuestionBase AreaMissingSideTruthQuestionQ(Random random, bool isProof)
+      {
+         var q = new TruthQuestion(random, isProof);
+         q.Id = "AreaMissingSideTruthQuestion";
+         q.Marks = 1;
+         int x = random.Next(8,16);
+         int y = random.Next(8,16);
+         q.Stem = String.Format(@"Consider a rectangle of area {0} whose one side is of length {1}. What it the length of its other side?", x*y, x);
+         q.AddCorrects(String.Format(@"{0}", y));
+         q.AddIncorrects(String.Format(@"{0}", y-2));
+         q.AddIncorrects(String.Format(@"{0}", y-1));
+         q.AddIncorrects(String.Format(@"{0}", y+1));
+         q.AddIncorrects(String.Format(@"{0}", y+2));
+        
+         return q;
+      }
+   }
+}
+</pre>
+
+<p>Here, the line <code>int x = random.Next(8,16);</code> gets Dividni to randomly choose an integer (whole number) between 8 and 15 inclusive (the 16 is the first integer <b>not</b> to be chosen anymore for the length of one of the rectangle's sides. The line after that chooses the length <code>y</code> of the other side (which the student is meant to work out).</p>
+<p>Composing the stem, we use a default string with two placeholders, <code>{0}</code> and <code>{1}</code> as the first argument to the string formatting function <code>String.Format</code>. We supply the values of those placeholders as the 2nd and 3rd argument, i.e., as <code>x*y</code> and <code>x</code>.</p>
+
+<p>For the correct answer option, we supply the value of <code>y</code> embedded in a string, and for the incorrect answer options, we supply integers up to 2 smaller or larger than <code>y</code>.</p>
+
+<p>This requires that you tick either the "Proof copy (not for examination)" at the bottom of the "Edit Assessment Setup" / "Exam Setup" dialog or that you choose the option at production time from the "Generate Final Exam Scripts" menu.</p>
+<p>To produce your proofreading run, click on "Generate Final Exam Scripts" at the top right of the exam preview window.</p>
+<p>Under Paper Count, enter 10 (or whatever number of versions you want to generate for proofreading).</p>
+<p>As the StartID, you can choose anything. Best practice is to use a StartID that ensures that the range of version numbers you will create is different from those generated for the actual exam - in case someone / something leaks the proofreading scripts to students, this prevents a situation where the answers to some scripts are known and those of others aren't. For example, if you set StartID to 20, this will generate versions 20 to 29 (for 10 versions). You could then use the default of 42 for the StartID for your actual exam script versions.</p>
+<p>Unless you plan to do all of the proofreading yourself, you probably don't want to tick the "Single (large) PDF" box.</p>
+<p>Hit the "Generate final exam scripts" button.</p>
+<p>When done, Dividni will prompt you to download the "ground truth" answer files as a ZIP file. You must download them, but for the act of proofreading, you do not actually need them. Once you have downloaded the "ground truth" answer files, Dividni makes a link to the actual scripts available.</p>
+<p>Do not forget to proofread the prologue (front page and instructions) - most Assessment Services rejects relate to issues on this page!</p>
+<h2>Production for printing</h2>
+<p>If you've previously been proofreading, ensure that the "Proof copy (not for examination)" at the bottom of the "Edit Assessment Setup" / "Exam Setup" dialog is turned off and the setup saved as such.</p>
+<p>Click on "Generate Final Exam Scripts" at the top right of the exam preview window.&nbsp;</p>
+<p>Under Paper Count, enter whatever number of versions you need. Generally, you will want that to be <strong>class size + X</strong>. In other words: One individual version per student enrolled and then some extras in case people spoil their scripts or you drop them in the rain or you do need to split the test or exam across multiple theatres after all. Assessment Services generally want 20% more script versions for the exams than there are students.</p>
+<p>As the StartID, choose a number that doesn't overlap with any range that you have used for proofreading. I usually like to generate two basic tests or exams - one for the class that sits it on the day and another (with a few questions swapped out) for any stragglers who sit later as a result of aegrotats etc. In this case, ensure that the StartIDs of both are sufficiently different so there are no overlaps - this allows you to tell scripts apart if students come and see you later.&nbsp;</p>
+<p>The default of 42 for the StartID is a nod to Douglas Adams and his answer to the ultimate question of life, the universe and everything.</p>
+<p>Tick the "Single (large) PDF" box if you are producing scripts for submission to Assessment Services.</p>
+<p>Hit the "Generate final exam scripts" button.</p>
+<p>This can now take some time, depending on how many questions you have in your exam and how many versions you need to produce. An exam with 40 questions and 1000 versions can take in the order of a couple of hours to produce. Do not close your browser - there will be a progress bar. Needless to say it is not a good idea to start this process when you are about to pack up your laptop to go home!</p>
+<p>When done, Dividni will prompt you to download the "ground truth" answer files as a ZIP file. <strong>You must download them and store them in a safe place as you will need them for marking</strong> (if you lose them or your computer dies or whatever, we may not be able to help you). Download and store them every time you have made changes to the test / exam as they may have changed also.</p>
+<p>Once you have downloaded the "ground truth" answer files, Dividni makes a link to the actual scripts available.</p>
+<h3>Instructions to printing contractors</h3>
+<p>Printing a Dividni test or exam is a bit of an unusual task for a printing contractor: Normally, they print N copies of 1 document. We need to ask them to print 1 copy of N documents, staple them and - recommended for large classes to ensure embargo until official start time - inserted into an A4 envelope each.</p>
+<p>Here are the instructions we use (adapt for your own assessment):</p>
+<table style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+        <tr>
+            <td style="width: 99.902%;">
+                <pre class="moz-quote-pre">Could we please have all of the [number of scripts] PDF files in the attached ZIP file printed individually for the DIVIDNI 101 test. The ZIP format opens with Winzip or 7zip.
+
+We need:
+
+- double-sided printing
+- each printout stapled in the top left corner
+- each printout inserted in a plain A4 envelope and sealed
+- everything here by [date a couple of days before the test] ideally (the test is
+on [actual test date and time])</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p>The last bullet ensures that there is time for contingencies (mis-printing, lost deliveries etc.)</p>
+<h2>What could possibly go wrong?</h2>
+<p>Actually, a lot!</p>
+<ul>
+    <li>If you see an error message during the production of an exam that didn't appear during the the preview, the most likely cause is a mismatched HTML tag in an answer option or statement that does not always appear in each version. This most commonly happens in questions where you have applied some formatting (e.g., bold, italics, fixed-width font, super- or subscripts):&nbsp;
+        <ul>
+            <li>E.g., a matched HTML tag for a superscript looks like this: <tt>500 m&lt;sup&gt;2&lt;/sup&gt;</tt></li>
+            <li>An unmatched tag might have the closing tag missing altogether: &nbsp;<tt>500 m&lt;sup&gt;2</tt></li>
+            <li>... or might be missing the "/" in the closing tag: <tt>500 m&lt;sup&gt;2&lt;sup&gt;</tt></li>
+            <li>Another problem are overlapping tags. E.g., bold italics should be<tt> &lt;b&gt;&lt;i&gt;like so&lt;/i&gt;&lt;/b&gt;</tt></li>
+            <li>... and not <tt>&lt;i&gt;&lt;b&gt;like so&lt;/i&gt;&lt;/b&gt;</tt> or <tt>&lt;b&gt;&lt;i&gt;like so&lt;/b&gt;&lt;/i&gt;</tt></li>
+        </ul>
+    </li>
+    <li>If the error already occurs during the preview, it could also be a similar problem in a question stem (yes, even paragraphs need closing tags: <tt>&lt;p&gt;This paragraph has one!&lt;/p&gt;</tt>), or in your exam's prologue or in your epilogue (appendix). You can copy and paste the content of your prologue in this <a class="inline_disabled" href="https://validator.w3.org/" target="_blank" rel="noopener">HTML checker</a> (choose "Validate by Direct Input" and choose "Validate HTML fragment" under "More Options").</li>
+    <li>Trying to squeeze too many questions on a page can lead to pagination issues when Dividni chooses mostly longer multi-line options / statements for some script versions. This can lead to page overruns, causing these versions to have a different number of pages from others, which is a no-no. Dividni detects any such page count mismatch automatically and stops production.</li>
+    <li>If you are using parameterised questions, bugs in your C# code can cause a compile errors or runtime error during preview and / or exam production. Ideally, an error message will tell you what is going wrong, however bug hunting may be better performed in the command line version.</li>
+    <li>Printers not obeying PDF page dimensions. If the OMR sheet takes up the entire page so that the fat black markers look rectangular rather than square (and the L-shaped one doesn't look as if made up of three smaller squares), chances are your printer is shaving off the outside of the markers. This is not a common problem but will leave the test / exam unscannable. <strong>BASIC RULE</strong>: <em>The corner markers and round row and column markers must ALL be visible and undamaged.&nbsp;&nbsp;</em></li>
+    <li>PDF readers / printers / virus scanners inserting artifacts such as barcodes, messages, labels, streaks etc. on the OMR sheet.&nbsp;<strong>BASIC RULE</strong>: <em>The corner markers and round row and column markers must ALL be visible and undamaged.</em><em>&nbsp;&nbsp;</em></li>
+</ul>
+</body>
+</html>
